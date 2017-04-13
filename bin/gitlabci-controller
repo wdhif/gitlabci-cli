@@ -1,0 +1,5 @@
+#!/bin/ruby -W0
+
+require "gitlabci/controller"
+
+Gitlabci::Controller::Cli.start ( ARGV )
