@@ -49,44 +49,54 @@ module Gitlabci
 
       def run_pipeline
         response = RestClient::Request.execute(
-    							:method => :get,
+                  :method => :post,
                   :headers => {"PRIVATE-TOKEN" => options[:token]},
-    							:url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipeline?ref=master",
-    							:verify_ssl => false,
-    							:timeout => 10)
+                  :url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipeline?ref=master",
+                  :verify_ssl => false,
+                  :timeout => 10)
 
-        data = JSON.parse(response)
-        puts data
-        puts data["id"]
+        pipeline = JSON.parse(response)
+
+        puts "Waiting for pipeline job to finish"
+        pipeline_status = get_pipeline_status(options["id"], options["token"], options["url"], pipeline["id"], false)
+        loop do
+          puts "The api is not responding, wait for next call" if pipeline_status == nil
+
+          pipeline_status = get_pipeline_status(options["id"], options["token"], options["url"], pipeline["id"], false)
+          sleep 2
+
+          break if pipeline_status != "running" && pipeline_status != "pending" && pipeline_status != nil
+        end
+
+        if pipeline_status == "success"
+          puts "\e[32mPipeline passed\e[0m"
+          exit 0
+        else
+          puts "\e[31mPipeline ended with the status #{pipeline_status}\e[0m"
+          exit 1
+        end
+
       end
 
-      desc "ps", "Get a pipeline status"
+      desc "get", "Get a pipeline status"
 
       method_option :id, :required => true, :aliases => "-i"
       method_option :token, :required => true, :aliases => "-t"
       method_option :url, :required => true, :aliases => "-u"
+      method_option :pipeline, :required => true, :aliases => "-p"
 
-      def get_pipeline_status
+      def get_pipeline_status(id = nil, url = nil, token = nil, pipeline = nil, output = true)
         response = RestClient::Request.execute(
                   :method => :get,
                   :headers => {"PRIVATE-TOKEN" => options[:token]},
-                  :url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipelines/",
+                  :url => "#{options[:url] || url}/api/v3/projects/#{options[:id] || id}/pipelines/#{options["pipeline"] || pipeline}",
                   :verify_ssl => false,
                   :timeout => 5)
 
-        data = JSON.parse(response)
-        puts data["id"]
-        puts data["status"]
-        #
-        # i = 0
-        # begin
-        #   puts "#{data["status"]}, #{i} seconds ago"
-        #   sleep 1
-        # end while data["status"] == "running"
-        #   i += 1
-        #   puts "#{data["status"]}, #{i} seconds ago"
-        #   sleep 1
-        # end
+        pipeline = JSON.parse(response)
+
+        puts pipeline["status"] if output
+        pipeline["status"]
       end
 
     end
