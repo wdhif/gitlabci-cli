@@ -21,10 +21,12 @@ Or install it yourself as:
 ## Usage
 
 ```
-  gitlabci-controller help [COMMAND]                                    # Describe available commands or one specific command
-  gitlabci-controller list -i, --id=ID -t, --token=TOKEN -u, --url=URL  # List pipelines for a project
-  gitlabci-controller ps -i, --id=ID -t, --token=TOKEN -u, --url=URL    # Get a pipeline status
-  gitlabci-controller run -i, --id=ID -t, --token=TOKEN -u, --url=URL   # Run a pipeline for a project
+  gitlabci-controller help [COMMAND]                                                              # Describe available commands or one specific command
+  gitlabci-controller list -i, --id=ID -t, --token=TOKEN -u, --url=URL                            # List the 20 last pipelines for a project
+  gitlabci-controller get -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL     # Get a pipeline status
+  gitlabci-controller run -i, --id=ID -t, --token=TOKEN -u, --url=URL                             # Run a pipeline for a project
+  gitlabci-controller retry -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL   # Retry a failed pipeline status
+  gitlabci-controller cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL  # cancel a running pipeline status
 ```
 
 ## Development
