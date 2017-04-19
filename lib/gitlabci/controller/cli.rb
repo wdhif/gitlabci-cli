@@ -12,6 +12,7 @@ module Gitlabci
       method_option :id, :required => true, :aliases => "-i"
       method_option :token, :required => true, :aliases => "-t"
       method_option :url, :required => true, :aliases => "-u"
+      method_option :test, :boolean => true
 
       def list_pipelines
         begin
@@ -26,8 +27,10 @@ module Gitlabci
         rescue => e
           puts "API error"
           puts e
-          sleep 2
-          retry
+          unless options[:test]
+            sleep 2
+            retry
+          end
         end
 
         table = Terminal::Table.new do |t|
@@ -41,7 +44,7 @@ module Gitlabci
               pipeline["user"]["name"],
               pipeline["created_at"],
               pipeline["finished_at"]
-              ])
+            ])
           end
         end
 
@@ -54,6 +57,7 @@ module Gitlabci
       method_option :token, :required => true, :aliases => "-t"
       method_option :url, :required => true, :aliases => "-u"
       method_option :pipeline, :required => true, :aliases => "-p"
+      method_option :test, :boolean => true
 
       def get_pipeline_status(id = nil, url = nil, token = nil, pipeline = nil, output = true)
         begin
@@ -68,8 +72,10 @@ module Gitlabci
         rescue => e
           puts "API error"
           puts e
-          sleep 2
-          retry
+          unless options[:test]
+            sleep 2
+            retry
+          end
         end
 
         puts pipeline["status"] if output
@@ -82,6 +88,7 @@ module Gitlabci
       method_option :token, :required => true, :aliases => "-t"
       method_option :url, :required => true, :aliases => "-u"
       method_option :follow, :boolean => true, :aliases => "-f"
+      method_option :test, :boolean => true
 
       def run_pipeline
         begin
@@ -96,8 +103,10 @@ module Gitlabci
         rescue => e
           puts "API error"
           puts e
-          sleep 2
-          retry
+          unless options[:test]
+            sleep 2
+            retry
+          end
         end
 
         if options[:follow]
@@ -132,6 +141,7 @@ module Gitlabci
       method_option :url, :required => true, :aliases => "-u"
       method_option :pipeline, :required => true, :aliases => "-p"
       method_option :follow, :boolean => true, :aliases => "-f"
+      method_option :test, :boolean => true
 
       def retry_pipeline
         begin
@@ -146,8 +156,10 @@ module Gitlabci
         rescue => e
           puts "API error"
           puts e
-          sleep 2
-          retry
+          unless options[:test]
+            sleep 2
+            retry
+          end
         end
 
         if options[:follow]
@@ -180,6 +192,7 @@ module Gitlabci
       method_option :token, :required => true, :aliases => "-t"
       method_option :url, :required => true, :aliases => "-u"
       method_option :pipeline, :required => true, :aliases => "-p"
+      method_option :test, :boolean => true
 
       def cancel_pipeline
         begin
@@ -194,11 +207,13 @@ module Gitlabci
         rescue => e
           puts "API error"
           puts e
-          sleep 2
-          retry
+          unless options[:test]
+            sleep 2
+            retry
+          end
         end
 
-        puts "Pipeline #{options["pipeline"]} has been canceled"
+        puts "Pipeline job #{options["pipeline"]} has been canceled"
       end
 
     end
