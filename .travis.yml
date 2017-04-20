@@ -1,7 +1,8 @@
 language: ruby
 rvm:
  - 2.2
- - jruby
- - rbx-2
+ 
+ before_install:
+  - gem install bundler
 
 script: bundle exec rspec
