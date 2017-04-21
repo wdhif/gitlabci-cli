@@ -27,7 +27,7 @@ Or install it yourself as:
   gitlabci-controller get -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL     # Get a pipeline status
   gitlabci-controller run -i, --id=ID -t, --token=TOKEN -u, --url=URL                             # Run a pipeline for a project
   gitlabci-controller retry -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL   # Retry a failed pipeline status
-  gitlabci-controller cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL  # cancel a running pipeline status
+  gitlabci-controller cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL  # Cancel a running pipeline status
 ```
 
 ## Development
