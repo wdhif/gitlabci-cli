@@ -63,7 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.14)
+  bundler
   gitlabci-controller!
   rake (~> 10.0)
   rspec (~> 3.0)
