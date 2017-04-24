@@ -13,9 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Control your GitlabCI workflow from your terminal}
   spec.homepage      = "http://github.com/wdhif/gitlabci-controller"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
+  spec.files         = []
 
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
