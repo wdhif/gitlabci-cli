@@ -186,7 +186,7 @@ module Gitlabci
         end
       end
 
-      desc "cancel", "cancel a running pipeline status"
+      desc "cancel", "Cancel a running pipeline status"
 
       method_option :id, :required => true, :aliases => "-i"
       method_option :token, :required => true, :aliases => "-t"
