@@ -63,12 +63,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
+  bundler (~> 1.7)
   gitlabci-controller!
   rake (~> 10.0)
   rspec (~> 3.0)
   rspec-mocks
   webmock
 
-BUNDLED WITH
-   1.14.6
