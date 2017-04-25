@@ -21,7 +21,7 @@ module Gitlabci
                     :headers => {"PRIVATE-TOKEN" => options[:token]},
                     :url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipelines/",
                     :verify_ssl => false,
-                    :timeout => 5)
+                    :timeout => 60)
 
           pipelines = JSON.parse(response)
         rescue => e
@@ -66,7 +66,7 @@ module Gitlabci
                     :headers => {"PRIVATE-TOKEN" => options[:token]},
                     :url => "#{options[:url] || url}/api/v3/projects/#{options[:id] || id}/pipelines/#{options["pipeline"] || pipeline}",
                     :verify_ssl => false,
-                    :timeout => 5)
+                    :timeout => 60)
 
           pipeline = JSON.parse(response)
         rescue => e
@@ -97,7 +97,7 @@ module Gitlabci
                     :headers => {"PRIVATE-TOKEN" => options[:token]},
                     :url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipeline?ref=master",
                     :verify_ssl => false,
-                    :timeout => 10)
+                    :timeout => 60)
 
           pipeline = JSON.parse(response)
         rescue => e
@@ -150,7 +150,7 @@ module Gitlabci
                     :headers => {"PRIVATE-TOKEN" => options[:token]},
                     :url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipelines/#{options["pipeline"]}/retry",
                     :verify_ssl => false,
-                    :timeout => 5)
+                    :timeout => 60)
 
           pipeline = JSON.parse(response)
         rescue => e
@@ -201,7 +201,7 @@ module Gitlabci
                     :headers => {"PRIVATE-TOKEN" => options[:token]},
                     :url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipelines/#{options["pipeline"]}/cancel",
                     :verify_ssl => false,
-                    :timeout => 5)
+                    :timeout => 60)
 
           pipeline = JSON.parse(response)
         rescue => e
