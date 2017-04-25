@@ -1,20 +1,20 @@
-gitlabci-controller 1 "APRIL 2017" gitlabci-controller "User Manuals"
+gitlabci-cli 1 "APRIL 2017" gitlabci-cli "User Manuals"
 =======================================
 
 NAME
 ----
 
-gitlabci-controller - Control your GitlabCI workflow from your terminal
+gitlabci-cli - Control your GitlabCI workflow from your terminal
 
 SYNOPSIS
 --------
 
-`gitlabci-controller` [`COMMAND`] [`-i` *id*] [`-t` *token*] [`-u` *url*]
+`gitlabci-cli` [`COMMAND`] [`-i` *id*] [`-t` *token*] [`-u` *url*]
 
 DESCRIPTION
 -----------
 
-`gitlabci-controller` Control your GitlabCI workflow from your terminal
+`gitlabci-cli` Control your GitlabCI workflow from your terminal
 
 OPTIONS
 -------
@@ -55,4 +55,4 @@ OPTIONS
 AUTHOR
 ------
 
-Wassim DHIF (wassimdhif@gmail.com)
+Wassim DHIF (wassim.dhif@worldline.com)

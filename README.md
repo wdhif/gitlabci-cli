@@ -1,5 +1,5 @@
-# gitlabci-controller
-[![Build Status](https://travis-ci.org/wdhif/gitlabci-controller.svg?branch=master)](https://travis-ci.org/wdhif/gitlabci-controller)
+# gitlabci-cli
+[![Build Status](https://travis-ci.org/wdhif/gitlabci-cli.svg?branch=master)](https://travis-ci.org/wdhif/gitlabci-cli)
 
 Control your GitlabCI workflow from your terminal
 
@@ -8,7 +8,7 @@ Control your GitlabCI workflow from your terminal
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'gitlabci-controller'
+gem 'gitlabci-cli'
 ```
 
 And then execute:
@@ -17,17 +17,17 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install gitlabci-controller
+    $ gem install gitlabci-cli
 
 ## Usage
 
 ```
-  gitlabci-controller help [COMMAND]                                                              # Describe available commands or one specific command
-  gitlabci-controller list -i, --id=ID -t, --token=TOKEN -u, --url=URL                            # List the 20 last pipelines for a project
-  gitlabci-controller get -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL     # Get a pipeline status
-  gitlabci-controller run -i, --id=ID -t, --token=TOKEN -u, --url=URL                             # Run a pipeline for a project
-  gitlabci-controller retry -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL   # Retry a failed pipeline status
-  gitlabci-controller cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL  # Cancel a running pipeline status
+  gitlabci-cli help [COMMAND]                                                              # Describe available commands or one specific command
+  gitlabci-cli list -i, --id=ID -t, --token=TOKEN -u, --url=URL                            # List the 20 last pipelines for a project
+  gitlabci-cli get -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL     # Get a pipeline status
+  gitlabci-cli run -i, --id=ID -t, --token=TOKEN -u, --url=URL                             # Run a pipeline for a project
+  gitlabci-cli retry -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL   # Retry a failed pipeline status
+  gitlabci-cli cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL  # Cancel a running pipeline status
 ```
 
 ## Development
@@ -38,4 +38,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/wdhif/gitlabci-controller.
+Bug reports and pull requests are welcome on GitHub at https://github.com/wdhif/gitlabci-cli.
