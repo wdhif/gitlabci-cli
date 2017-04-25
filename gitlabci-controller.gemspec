@@ -14,9 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://github.com/wdhif/gitlabci-controller"
 
   spec.files         = []
-
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables   = "gitlabci-controller"
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'thor'
