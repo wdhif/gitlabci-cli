@@ -87,6 +87,7 @@ module Gitlabci
       method_option :id, :required => true, :aliases => "-i"
       method_option :token, :required => true, :aliases => "-t"
       method_option :url, :required => true, :aliases => "-u"
+      method_option :branch, :default => "master", :aliases => "-b"
       method_option :follow, :boolean => true, :aliases => "-f"
       method_option :test, :boolean => true
 
@@ -95,7 +96,7 @@ module Gitlabci
           response = RestClient::Request.execute(
                     :method => :post,
                     :headers => {"PRIVATE-TOKEN" => options[:token]},
-                    :url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipeline?ref=master",
+                    :url => "#{options[:url]}/api/v3/projects/#{options[:id]}/pipeline?ref=#{options[:branch]}",
                     :verify_ssl => false,
                     :timeout => 60)
 
