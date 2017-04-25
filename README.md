@@ -29,6 +29,8 @@ Or install it yourself as:
   gitlabci-cli retry -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL   # Retry a failed pipeline status
   gitlabci-cli cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL  # Cancel a running pipeline status
 ```
+[Getting started on gitlab 8.X](https://github.com/wdhif/gitlabci-cli/blob/master/docs/getting-started-gitlab-8.md)  
+[Getting started on gitlab 9.X](https://github.com/wdhif/gitlabci-cli/blob/master/docs/getting-started-gitlab-9.md)
 
 ## Development
 
