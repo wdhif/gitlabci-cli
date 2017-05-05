@@ -3,40 +3,35 @@
 
 Control your GitlabCI workflow from your terminal
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'gitlabci-cli'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install gitlabci-cli
-
 ## Usage
 
 ```
-  gitlabci-cli help [COMMAND]                                                              # Describe available commands or one specific command
-  gitlabci-cli list -i, --id=ID -t, --token=TOKEN -u, --url=URL                            # List the 20 last pipelines for a project
-  gitlabci-cli get -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL     # Get a pipeline status
-  gitlabci-cli run -i, --id=ID -t, --token=TOKEN -u, --url=URL                             # Run a pipeline for a project
-  gitlabci-cli retry -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL   # Retry a failed pipeline status
-  gitlabci-cli cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL  # Cancel a running pipeline status
+gitlabci-cli help [COMMAND]                                                              # Describe available commands or one specific command
+gitlabci-cli list -i, --id=ID -t, --token=TOKEN -u, --url=URL                            # List the 20 last pipelines for a project
+gitlabci-cli get -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL     # Get a pipeline status
+gitlabci-cli run -i, --id=ID -t, --token=TOKEN -u, --url=URL                             # Run a pipeline for a project
+gitlabci-cli retry -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL   # Retry a failed pipeline status
+gitlabci-cli cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --url=URL  # Cancel a running pipeline status
 ```
 [Getting started on gitlab 8.X](https://github.com/wdhif/gitlabci-cli/blob/master/docs/getting-started-gitlab-8.md)  
 [Getting started on gitlab 9.X](https://github.com/wdhif/gitlabci-cli/blob/master/docs/getting-started-gitlab-9.md)
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+1. Install the dependencies (for centos).
+```
+yum install gcc-c++ ruby-devel coreutils
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+2. Install the application dependencies.
+```
+bundle install
+```
+
+3. Run the project.
+```
+bundle exec gitlabci-cli help
+```
 
 ## Contributing
 
