@@ -1,6 +1,6 @@
 require "bundler/setup"
 require "gitlabci/controller"
-require 'webmock/rspec'
+require "webmock/rspec"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

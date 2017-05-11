@@ -58,7 +58,7 @@ RSpec.describe Gitlabci::Controller::Cli, :type => :aruba do
       end
 
       stub_request(:get, "https://gitlab.fr/api/v3/projects/1/pipelines/").
-        with(headers: {'Private-Token'=>'1234'}).
+        with(headers: {"Private-Token"=>"1234"}).
         to_return(status: 200, body: response, headers: {})
 
       expect do
@@ -69,12 +69,12 @@ RSpec.describe Gitlabci::Controller::Cli, :type => :aruba do
     end
 
     it "get a pipeline" do
-      response = '{
+      response = "{
         "status": "running"
-      }'
+      }"
 
       stub_request(:get, "https://gitlab.fr/api/v3/projects/1/pipelines/1").
-         with(headers: {'Private-Token'=>'1234'}).
+         with(headers: {"Private-Token"=>"1234"}).
          to_return(status: 200, body: response, headers: {})
 
       expect do
@@ -85,12 +85,12 @@ RSpec.describe Gitlabci::Controller::Cli, :type => :aruba do
     end
 
     it "run a pipelines" do
-      response = '{
+      response = "{
         "id": 1
-      }'
+      }"
 
       stub_request(:post, "https://gitlab.fr/api/v3/projects/1/pipeline?ref=master").
-        with(headers: {'Private-Token'=>'1234'}).
+        with(headers: {"Private-Token"=>"1234"}).
         to_return(status: 200, body: response, headers: {})
 
       expect do
@@ -101,12 +101,12 @@ RSpec.describe Gitlabci::Controller::Cli, :type => :aruba do
     end
 
     it "retry a pipeline" do
-      response = '{
+      response = "{
         "id": 1
-      }'
+      }"
 
       stub_request(:post, "https://gitlab.fr/api/v3/projects/1/pipelines/1/retry").
-         with(headers: {'Private-Token'=>'1234'}).
+         with(headers: {"Private-Token"=>"1234"}).
          to_return(status: 200, body: response, headers: {})
 
       expect do
@@ -117,12 +117,12 @@ RSpec.describe Gitlabci::Controller::Cli, :type => :aruba do
     end
 
     it "cancel a pipeline" do
-      response = '{
+      response = "{
         "id": 1
-      }'
+      }"
 
       stub_request(:post, "https://gitlab.fr/api/v3/projects/1/pipelines/1/cancel").
-         with(headers: {'Private-Token'=>'1234'}).
+         with(headers: {"Private-Token"=>"1234"}).
          to_return(status: 200, body: response, headers: {})
 
       expect do
