@@ -1,5 +1,6 @@
 require "thor"
 require "gitlabci/controller/pipeline"
+require "gitlabci/controller/trigger"
 
 module Gitlabci
   module Controller
@@ -8,7 +9,7 @@ module Gitlabci
       subcommand "pipeline", Pipeline
 
       desc "trigger SUBCOMMAND", "Interact the trigger API"
-      subcommand "trigger", Pipeline
+      subcommand "trigger", Trigger
     end
   end
 end
