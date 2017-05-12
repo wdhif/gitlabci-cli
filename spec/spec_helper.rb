@@ -10,6 +10,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+  # To mute the STDOUT during the tests
   original_stderr = $stderr
   original_stdout = $stdout
   config.before(:all) do

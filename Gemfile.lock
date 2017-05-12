@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gitlabci-cli (0.1.0)
+    gitlabci-cli (2.0.0)
       json
       json_pure
       rest-client

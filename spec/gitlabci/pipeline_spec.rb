@@ -6,7 +6,6 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
     it "print the help" do
       expect(Gitlabci::Controller::Pipeline.start).not_to be nil
     end
-
   end
 
   context "with arguments" do
@@ -16,7 +15,6 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
     end
 
     it "list the pipelines" do
-
       response = '[
         {
           "id": 1,
@@ -57,15 +55,14 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
         end
       end
 
-      stub_request(:get, "https://gitlab.fr/api/v3/projects/1/pipelines/").
-        with(headers: {"Private-Token"=>"1234"}).
-        to_return(status: 200, body: response, headers: {})
+      stub_request(:get, "https://gitlab.fr/api/v4/projects/1/pipelines/")
+        .with(headers: {"PRIVATE-TOKEN" => "1234"})
+        .to_return(status: 200, body: response, headers: {})
 
       expect do
         args = ["list","-i", "1", "-t", "1234", "-u", "https://gitlab.fr", "--test"]
         Gitlabci::Controller::Pipeline.start(args)
       end.to output(puts table).to_stdout
-
     end
 
     it "get a pipeline" do
@@ -73,15 +70,14 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
         "status": "running"
       }'
 
-      stub_request(:get, "https://gitlab.fr/api/v3/projects/1/pipelines/1").
-         with(headers: {"Private-Token"=>"1234"}).
-         to_return(status: 200, body: response, headers: {})
+      stub_request(:get, "https://gitlab.fr/api/v4/projects/1/pipelines/1")
+        .with(headers: {"PRIVATE-TOKEN" => "1234"})
+        .to_return(status: 200, body: response, headers: {})
 
       expect do
         args = ["get","-i", "1", "-t", "1234", "-u", "https://gitlab.fr", "-p", 1, "--test"]
         Gitlabci::Controller::Pipeline.start(args)
       end.to output("running\n").to_stdout
-
     end
 
     it "run a pipelines" do
@@ -89,15 +85,14 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
         "id": 1
       }'
 
-      stub_request(:post, "https://gitlab.fr/api/v3/projects/1/pipeline?ref=master").
-        with(headers: {"Private-Token"=>"1234"}).
-        to_return(status: 200, body: response, headers: {})
+      stub_request(:post, "https://gitlab.fr/api/v4/projects/1/pipeline")
+        .with(headers: {"PRIVATE-TOKEN" => "1234"}, body: {"ref" => "master"})
+        .to_return(status: 200, body: response, headers: {})
 
       expect do
         args = ["run","-i", "1", "-t", "1234", "-u", "https://gitlab.fr", "--test"]
         Gitlabci::Controller::Pipeline.start(args)
       end.to output("Pipeline job 1 has been started\n").to_stdout
-
     end
 
     it "retry a pipeline" do
@@ -105,15 +100,14 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
         "id": 1
       }'
 
-      stub_request(:post, "https://gitlab.fr/api/v3/projects/1/pipelines/1/retry").
-         with(headers: {"Private-Token"=>"1234"}).
-         to_return(status: 200, body: response, headers: {})
+      stub_request(:post, "https://gitlab.fr/api/v4/projects/1/pipelines/1/retry")
+        .with(headers: {"PRIVATE-TOKEN" => "1234"})
+        .to_return(status: 200, body: response, headers: {})
 
       expect do
         args = ["retry","-i", "1", "-t", "1234", "-u", "https://gitlab.fr", "-p", 1, "--test"]
         Gitlabci::Controller::Pipeline.start(args)
       end.to output("Pipeline job 1 has been started\n").to_stdout
-
     end
 
     it "cancel a pipeline" do
@@ -121,16 +115,14 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
         "id": 1
       }'
 
-      stub_request(:post, "https://gitlab.fr/api/v3/projects/1/pipelines/1/cancel").
-         with(headers: {"Private-Token"=>"1234"}).
-         to_return(status: 200, body: response, headers: {})
+      stub_request(:post, "https://gitlab.fr/api/v4/projects/1/pipelines/1/cancel")
+        .with(headers: {"PRIVATE-TOKEN" => "1234"})
+        .to_return(status: 200, body: response, headers: {})
 
       expect do
         args = ["cancel","-i", "1", "-t", "1234", "-u", "https://gitlab.fr", "-p", 1, "--test"]
         Gitlabci::Controller::Pipeline.start(args)
       end.to output("Pipeline job 1 has been canceled\n").to_stdout
-
     end
-
   end
 end
