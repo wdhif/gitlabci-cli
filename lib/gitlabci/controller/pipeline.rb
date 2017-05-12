@@ -36,15 +36,12 @@ module Gitlabci
 
         table = Terminal::Table.new do |t|
           t.title = "Pipelines for #{options[:id]}"
-          t.headings = ["Id", "Status", "Branch", "Created by", "Created at", "Finished at"]
+          t.headings = ["Id", "Status", "Branch"]
           pipelines.each do |pipeline|
             t.add_row([
               pipeline["id"],
               pipeline["status"],
               pipeline["ref"],
-              pipeline["user"]["name"],
-              pipeline["created_at"],
-              pipeline["finished_at"]
             ])
           end
         end

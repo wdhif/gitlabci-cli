@@ -19,22 +19,12 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
         {
           "id": 1,
           "ref": "master",
-          "status": "running",
-          "user": {
-            "name": "Kevin Flynn"
-          },
-          "created_at": "2017-04-19T12:06:58.651Z",
-          "finished_at": null
+          "status": "running"
         },
         {
           "id": 2,
           "ref": "master",
-          "status": "finished",
-          "user": {
-            "name": "Kevin Flynn"
-          },
-          "created_at": "2017-04-19T11:02:34.468Z",
-          "finished_at": "2017-04-19T12:06:58.550Z"
+          "status": "finished"
         }
       ]'
 
@@ -42,15 +32,12 @@ RSpec.describe Gitlabci::Controller::Pipeline, :type => :aruba do
 
       table = Terminal::Table.new do |t|
         t.title = "Pipelines for 1"
-        t.headings = ["Id", "Status", "Branch", "Created by", "Created at", "Finished at"]
+        t.headings = ["Id", "Status", "Branch"]
         pipelines.each do |pipeline|
           t.add_row([
             pipeline["id"],
             pipeline["status"],
-            pipeline["ref"],
-            pipeline["user"]["name"],
-            pipeline["created_at"],
-            pipeline["finished_at"]
+            pipeline["ref"]
           ])
         end
       end

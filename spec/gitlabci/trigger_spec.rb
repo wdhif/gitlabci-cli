@@ -166,5 +166,39 @@ RSpec.describe Gitlabci::Controller::Trigger, :type => :aruba do
         Gitlabci::Controller::Trigger.start(args)
       end.to output("Trigger 1 deleted\n").to_stdout
     end
+
+    it "build a trigger" do
+      response = '{
+        "id": 1,
+        "ref": "master",
+        "status": "pending"
+      }'
+
+      stub_request(:post, "https://gitlab.fr/api/v4/projects/1/trigger/pipeline")
+        .with(headers: {"PRIVATE-TOKEN" => "1234"}, body: {"token" => "TRIGGER_TOKEN", "ref" => "master"})
+        .to_return(status: 200, body: response, headers: {})
+
+      expect do
+        args = ["build", "-i", "1", "-t", "1234", "-u", "https://gitlab.fr", "--trigger_token", "TRIGGER_TOKEN", "--test"]
+        Gitlabci::Controller::Trigger.start(args)
+      end.to output("Pipeline job 1 has been started.\n").to_stdout
+    end
+
+    it "build a trigger with variables" do
+      response = '{
+        "id": 1,
+        "ref": "master",
+        "status": "pending"
+      }'
+
+      stub_request(:post, "https://gitlab.fr/api/v4/projects/1/trigger/pipeline")
+        .with(headers: {"PRIVATE-TOKEN" => "1234"},body: {"token" => "TRIGGER_TOKEN", "ref" => "master", "variables" => {"k1" => "v1", "k2" => "v2"}})
+        .to_return(status: 200, body: response, headers: {})
+
+      expect do
+        args = ["build", "-i", "1", "-t", "1234", "-u", "https://gitlab.fr", "--trigger_token", "TRIGGER_TOKEN", "-v=k1:v1", "k2:v2", "--test"]
+        Gitlabci::Controller::Trigger.start(args)
+      end.to output("Pipeline job 1 has been started.\n").to_stdout
+    end
   end
 end
