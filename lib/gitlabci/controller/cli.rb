@@ -1,15 +1,20 @@
-require "thor"
-require "gitlabci/controller/pipeline"
-require "gitlabci/controller/trigger"
+require 'thor'
+
+require 'gitlabci/controller/helper'
+require 'gitlabci/controller/pipeline'
+require 'gitlabci/controller/trigger'
 
 module Gitlabci
   module Controller
+    # Main CLI Class, with subcommands
     class Cli < Thor
-      desc "pipeline SUBCOMMAND", "Interact the pipeline API"
-      subcommand "pipeline", Pipeline
+      # RestClient.log = 'stdout'
 
-      desc "trigger SUBCOMMAND", "Interact the trigger API"
-      subcommand "trigger", Trigger
+      desc 'pipeline SUBCOMMAND', 'Interact the pipeline API'
+      subcommand 'pipeline', Pipeline
+
+      desc 'trigger SUBCOMMAND', 'Interact the trigger API'
+      subcommand 'trigger', Trigger
     end
   end
 end
