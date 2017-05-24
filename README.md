@@ -18,9 +18,15 @@ gitlabci-cli cancel -i, --id=ID -p, --pipeline=PIPELINE -t, --token=TOKEN -u, --
 
 ## Development
 
-1. Install the dependencies (for centos).
+1. Install the dependencies.
+
+For CentOS
 ```
-yum install gcc-c++ ruby-devel coreutils
+yum install gcc-c++ ruby-devel
+```
+For Ubuntu
+```
+apt install g++ make ruby-dev
 ```
 
 2. Install the application dependencies.
