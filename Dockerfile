@@ -22,6 +22,7 @@ RUN apt-get update -qq && \
     apt-get install -qq -y \
       build-essential \
       bundler \
+      git-core \
       ruby \
       ruby-dev \
       rubygems && \
