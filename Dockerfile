@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM rockyluke/debian:jessie
+FROM debian:jessie
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Europe/Amsterdam
@@ -25,7 +25,8 @@ RUN apt-get update -qq && \
       ruby \
       ruby-dev \
       rubygems && \
-    apt-clean
+    apt-get autoclean && \
+    apt-get autoremove
 
 RUN git clone https://github.com/wdhif/gitlabci-cli.git /usr/src && \
     cd /usr/src && \
