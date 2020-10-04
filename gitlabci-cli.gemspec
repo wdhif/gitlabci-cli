@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'terminal-table'
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rspec-mocks'
   spec.add_development_dependency 'webmock'
