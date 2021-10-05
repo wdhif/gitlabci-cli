@@ -1,5 +1,4 @@
 # gitlabci-cli
-[![Build Status](https://travis-ci.org/wdhif/gitlabci-cli.svg?branch=master)](https://travis-ci.org/wdhif/gitlabci-cli)
 
 Control your GitlabCI workflow from your terminal
 
