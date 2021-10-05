@@ -1,4 +1,5 @@
 # gitlabci-cli
+![](https://github.com/wdhif/gitlabci-cli/actions/workflows/main.yml/badge.svg)
 
 Control your GitlabCI workflow from your terminal
 

@@ -1,0 +1,21 @@
+name: main
+on: [push]
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+          bundler-cache: true
+      - run: bundle exec rspec
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - uses: docker/build-push-action@v2
+        with:
+          tags: gitlabci-cli
