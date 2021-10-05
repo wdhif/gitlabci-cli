@@ -1,5 +1,5 @@
 # gitlabci-cli
-[![Build Status](https://travis-ci.org/wdhif/gitlabci-cli.svg?branch=master)](https://travis-ci.org/wdhif/gitlabci-cli)
+![](https://github.com/wdhif/gitlabci-cli/actions/workflows/main.yml/badge.svg)
 
 Control your GitlabCI workflow from your terminal
 
